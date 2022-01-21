@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\2004m\PycharmProjects\Doodle_jump\design/SettingsDialog.ui'
+# Form implementation generated from reading ui file 'C:\Users\da778\Downloads\Doodle_jump-master\Doodle_jump-master\design/SettingsDialog.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.3
 #
@@ -15,6 +15,8 @@ class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(613, 436)
+        Dialog.setStyleSheet("background-color: #FFFFFF;\n"
+"")
         self.gridLayout_2 = QtWidgets.QGridLayout(Dialog)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.gridLayout = QtWidgets.QGridLayout()
@@ -22,7 +24,11 @@ class Ui_Dialog(object):
         self.ok_btn = QtWidgets.QPushButton(Dialog)
         font = QtGui.QFont()
         font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
         self.ok_btn.setFont(font)
+        self.ok_btn.setStyleSheet("border: 2px solid #000000;\n"
+"")
         self.ok_btn.setObjectName("ok_btn")
         self.gridLayout.addWidget(self.ok_btn, 2, 0, 1, 5)
         self.skins_list = QtWidgets.QListWidget(Dialog)
