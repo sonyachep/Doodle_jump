@@ -8,6 +8,7 @@ from design.MainWindow import Ui_MainWindow as MainWindowDesign
 from design.RatingDialog import Ui_Dialog as RatingDialogDesign
 from design.GetNameDialog import Ui_Dialog as GetNameDesign
 from design.SettingsDialog import Ui_Dialog as SettingsDialogDesign
+from design.Ending import Ui_MainWindow as EndingDesign
 
 from main import *
 import json
@@ -115,6 +116,13 @@ class MainWindow(QMainWindow, MainWindowDesign):
             exit(0)
 
 
+class Ending(QMainWindow, EndingDesign):
+    def __init__(self, score):
+        super(Ending, self).__init__()
+        self.setupUi(self)
+        self.score_txt.setText(f'СЧЕТ: {str(score)}')
+
+
 def except_hook(cls, exception, traceback):
     sys.__excepthook__(cls, exception, traceback)
 
@@ -137,3 +145,7 @@ if __name__ == '__main__':
                 f[user_name] = game.score
         with open("raiting.json", "w", encoding='utf8') as file:
             json.dump(f, file)
+
+        ending = Ending(game.score)
+        ending.show()
+        app.exec_()
