@@ -40,6 +40,7 @@ class SettingsDialog(QDialog, SettingsDialogDesign):
 
         self.setupUi(self)
         self.ok_btn.clicked.connect(self.ok_action)
+        self.setWindowTitle('Settings')
 
         self.skins_list.addItems(skins.keys())
         self.skins_list.currentTextChanged.connect(self.on_skin_changed)
@@ -68,10 +69,11 @@ class RatingDialog(QDialog, RatingDialogDesign):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.setWindowTitle('Rating')
 
         with open('raiting.json', encoding='utf-8') as rating_file:
             rating_file = json.load(rating_file)
-            rating_file = sorted(rating_file.items(), key=lambda x: x[1])
+            rating_file = sorted(rating_file.items(), key=lambda x: -x[1])
         rating = list(enumerate(rating_file, 1))
         rating = "\n".join(f"{i}.\t{val[0]}\t{val[1]}" for i, val in rating)
         self.rating_info.setText(rating)
@@ -121,6 +123,7 @@ class Ending(QMainWindow, EndingDesign):
         super(Ending, self).__init__()
         self.setupUi(self)
         self.score_txt.setText(f'СЧЕТ: {str(score)}')
+        self.setWindowTitle('Score')
 
 
 def except_hook(cls, exception, traceback):
